@@ -8,35 +8,19 @@ export default function App() {
   const date = new Date("May 05 2050");
   date.setDate(date.getDate() + count);
 
-  function handleReset() {
-    setCount(0);
-    setStep(1);
-  }
-
   return (
     <div>
       <div className="date-counter-box">
-        <p>Steps:{step}</p>
-        <input
-          type="range"
-          value={step}
-          min="1"
-          max="10"
-          onChange={(e) => setStep(parseInt(e.target.value))}
-          className="slider"
-        />
+        <button onClick={() => setStep((c) => c - 1)}>-</button>
+        <span>Step: {step}</span>
+        <button onClick={() => setStep((c) => c + 1)}>+</button>
       </div>
       <div className="date-counter-box">
         <button onClick={() => setCount((c) => c - step)}>-</button>
-        <input
-          type="text"
-          value={count}
-          onChange={(e) => setCount(parseInt(e.target.value))}
-        />
+   
         <span>Count: {count}</span>
         <button onClick={() => setCount((c) => c + step)}>+</button>
       </div>
-
       <div className="date-element">
         <span>
           {count === 0
@@ -47,13 +31,6 @@ export default function App() {
         </span>
         <span>{date.toDateString()}</span>
       </div>
-      {count !== 0 || step !== 1 ? (
-        <div className="reset-btn-div">
-          <button onClick={handleReset}>Reset</button>
-        </div>
-      ) : (
-        ""
-      )}
     </div>
   );
 }
