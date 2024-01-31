@@ -3,57 +3,49 @@
 import { useState } from "react";
 
 export default function App() {
-  const [count, setCount] = useState(0);
-  const [step, setStep] = useState(1);
-  const date = new Date("May 05 2050");
-  date.setDate(date.getDate() + count);
-
-  function handleReset() {
-    setCount(0);
-    setStep(1);
-  }
-
+  const [bill, setBill] = useState("");
+  const [myTip, setMytip] = useState(0);
+  const [myFrndTip, setmyFrndTip] = useState(0);
+  const average = (bill * myTip + bill * myFrndTip) / 2;
   return (
     <div>
-      <div className="date-counter-box">
-        <p>Steps:{step}</p>
+      <div>
+        <span>How much was the bill?</span>
         <input
-          type="range"
-          value={step}
-          min="1"
-          max="10"
-          onChange={(e) => setStep(parseInt(e.target.value))}
-          className="slider"
+          value={bill}
+          onChange={(e) => setBill(parseFloat(e.target.value))}
         />
+        {bill}
       </div>
-      <div className="date-counter-box">
-        <button onClick={() => setCount((c) => c - step)}>-</button>
-        <input
-          type="text"
-          value={count}
-          onChange={(e) => setCount(parseInt(e.target.value))}
-        />
-        <span>Count: {count}</span>
-        <button onClick={() => setCount((c) => c + step)}>+</button>
+      <div>
+        <span>How did you like the service?</span>
+        <SelectOptions onTip={setMytip} />
+        {myTip.toString().padEnd(4,'0')}
       </div>
-
-      <div className="date-element">
-        <span>
-          {count === 0
-            ? "Today is "
-            : count > 0
-            ? `${count} days from today is `
-            : `${Math.abs(count)} day ago was `}
-        </span>
-        <span>{date.toDateString()}</span>
+      <div>
+        <span>How did your friend like the service?</span>
+        <SelectOptions onTip={setmyFrndTip} />
+        {myFrndTip.toString().padEnd(4,'0')}
       </div>
-      {count !== 0 || step !== 1 ? (
-        <div className="reset-btn-div">
-          <button onClick={handleReset}>Reset</button>
-        </div>
-      ) : (
-        ""
-      )}
+      <div>
+        <p>
+          <b>You Pay Rs</b>{" "}
+          {`${parseInt(bill) + Math.round(average)} (Rs.${bill} Rs.${Math.round(
+            average
+          )})`}
+        </p>
+      </div>
     </div>
+  );
+}
+
+function SelectOptions({ onTip }) {
+  return (
+    <select onChange={(e) => onTip(e.target.value)}>
+      <option value={0}>Dissatisfied (0%)</option>
+      <option value={0.05}>it was okay (5%)</option>
+      <option value={0.1}>it was good (10%)</option>
+      <option value={0.12}>Absolutely amazing! (20%)</option>
+    </select>
   );
 }
