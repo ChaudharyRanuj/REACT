@@ -6,7 +6,9 @@ import Loader from "./components/Loader";
 import Error from "./components/Error";
 import StartScreen from "./components/StartScreen";
 import Questions from "./components/Questions";
-
+import NextBtn from "./components/NextBtn";
+import Progress from "./components/Progress";
+import FinishScreen from "./components/FinishScreen";
 const initialState = {
   questions: [],
   // "loading" , "error" , "ready" , "active" , "finished"
@@ -35,27 +37,57 @@ function reducer(state, action) {
         status: "active",
       };
     case "newAnswer":
+      const question = state.questions.at(state.index);
       return {
         ...state,
         answer: action.payload,
-        points: action.points
+        points:
+          action.payload === question.correctOption
+            ? state.points + question.points
+            : state.points,
+      };
+    case "nextQuestion":
+      const nextQuestion = state.index + 1;
+      return {
+        ...state,
+        index: nextQuestion,
+        answer: null,
+      };
+    case "finish":
+      return {
+        ...state,
+        status: "finished",
+        answer: null,
+      };
+    case "restart":
+      return {
+        ...state,
+        status: "ready",
+        points: 0,
+        index: 0,
       };
     default:
       throw new Error("Not able to load the questions.");
   }
 }
 export default function App() {
-  const [{ questions, status, index, answer }, dispatch] = useReducer(
+  const [{ questions, status, index, answer, points }, dispatch] = useReducer(
     reducer,
     initialState
   );
   const noOfQuestion = questions.length;
+  const maxPoints = questions.reduce(
+    (acc, question) => acc + question.points,
+    0
+  );
+
   useEffect(function () {
     fetch("http://localhost:8000/questions")
       .then((res) => res.json())
       .then((data) => dispatch({ type: "dataReceived", payload: data }))
       .catch((err) => dispatch({ type: "dataFailed" }));
   }, []);
+
   return (
     <div className="app">
       <Header />
@@ -65,9 +97,36 @@ export default function App() {
         {status === "ready" && (
           <StartScreen noOfQuestion={noOfQuestion} dispatch={dispatch} />
         )}
-        {status === "active" && <Questions questions={questions[index]} dispatch={dispatch} answer={answer}
-        
-        />}
+        {status === "active" && (
+          <>
+            <Progress
+              index={index}
+              noOfQuestion={noOfQuestion}
+              questions={questions}
+              points={points}
+              answer={answer}
+              maxPoints={maxPoints}
+            />
+            <Questions
+              questions={questions[index]}
+              dispatch={dispatch}
+              answer={answer}
+            />
+            <NextBtn
+              dispatch={dispatch}
+              answer={answer}
+              noOfQuestion={noOfQuestion}
+              index={index}
+            />
+          </>
+        )}
+        {status === "finished" && (
+          <FinishScreen
+            points={points}
+            maxPoints={maxPoints}
+            dispatch={dispatch}
+          />
+        )}
       </Main>
     </div>
   );
