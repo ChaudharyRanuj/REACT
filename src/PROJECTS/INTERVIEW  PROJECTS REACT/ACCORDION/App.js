@@ -20,7 +20,7 @@ export default function App() {
   const [selectedId, setSelectedId] = useState(null);
 
   function handleSelectedId(id) {
-    setSelectedId((val) => (val === id ? null : id));
+    setSelectedId((val)=> val === id ? null : id);
   }
   function handleEnableMultiSel() {
     setEnableMultiSel((value) => (value === true ? false : true));
