@@ -1,6 +1,8 @@
+import AccordionComp from "./components/accordion/accordion";
+import "./components/accordion/style.css";
+
 import { useState } from "react";
 
-// import { useEffect, useReducer } from "react";
 const faqs = [
   {
     title: "Where are these chairs assembled?",
@@ -15,6 +17,7 @@ const faqs = [
     text: "Excepturi velit laborum, perspiciatis nemo perferendis reiciendis aliquam possimus dolor sed! Dolore laborum ducimus veritatis facere molestias!",
   },
 ];
+
 export default function App() {
   const [enableMultiSel, setEnableMultiSel] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
