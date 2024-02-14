@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-// import LoadData from "./components/load-more-button";
 import App from "./App";
+// import LoadData from "./components/load-more-button";
 // import AccordionComp from "./components/accordion/accordion";
 // import StarRating from "./components/star-rating";
 // import ImageSlider from "./components/slider";
 // import QRCodeGenerator from "./components/qr-code-generator";
-import LightDarkMode from "./components/light-dark-mode";
+// import LightDarkMode from "./components/light-dark-mode";
 
 // RENDERING THE ROOT COMPONENT AND STRICT MODE
 // **********************************************
