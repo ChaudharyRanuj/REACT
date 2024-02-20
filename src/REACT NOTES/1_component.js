@@ -37,7 +37,7 @@ function App() {
 
 TYPES OF COMPONENT
 1) STATELESS COMPONENT
-2) 
+2) STATFULL COMPONENT
 
 
 
@@ -47,7 +47,6 @@ TYPES OF COMPONENT
 
 
 */
-
 
 export default function App() {
   // only one element can be return in react

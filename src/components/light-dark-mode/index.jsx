@@ -8,8 +8,8 @@ export default function LightDarkMode() {
   }
 
   return (
-    <div className="light-dark-mode" data-theme={theme}>
-      <div className="container">
+    <div className="light-dark-mode container" data-theme={theme}>
+      <div>
         <p>Hello World</p>
         <button onClick={handleThemeToggle}>Change Theme</button>
       </div>
