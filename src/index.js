@@ -6,7 +6,7 @@ import App from "./App";
 // import StarRating from "./components/star-rating";
 // import ImageSlider from "./components/slider";
 // import QRCodeGenerator from "./components/qr-code-generator";
-// import LightDarkMode from "./components/light-dark-mode";
+import LightDarkMode from "./components/light-dark-mode";
 
 // RENDERING THE ROOT COMPONENT AND STRICT MODE
 // **********************************************
@@ -20,6 +20,6 @@ root.render(
     {/* <ImageSlider url={'https://picsum.photos/v2/list?'} page={1} limit={10}/> */}
     {/* <LoadData/>   */}
     {/* <QRCodeGenerator/> */}
-    {/* <LightDarkMode /> */}
+    <LightDarkMode />
   </React.StrictMode>
 );
