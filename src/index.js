@@ -1,16 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
+import './index.css'
+// import App from "./App";
 // import LoadData from "./components/load-more-button";
 // import AccordionComp from "./components/accordion/accordion";
 // import StarRating from "./components/star-rating";
 // import ImageSlider from "./components/slider";
 // import QRCodeGenerator from "./components/qr-code-generator";
 // import LightDarkMode from "./components/light-dark-mode";
-import ScrollIndicator from "./components/scroll-progress-indicator/ScrollIndicator";
+// import ScrollIndicator from "./components/scroll-progress-indicator/ScrollIndicator";
+import Tabs from "./components/tabs/Tabs";
 
 // RENDERING THE ROOT COMPONENT AND STRICT MODE
 // **********************************************
+
+
+
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -22,6 +28,8 @@ root.render(
     {/* <LoadData/>   */}
     {/* <QRCodeGenerator/> */}
     {/* <LightDarkMode /> */}
-    <ScrollIndicator />
+    {/* <ScrollIndicator /> */}
+    <Tabs />
+
   </React.StrictMode>
 );
