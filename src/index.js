@@ -6,7 +6,8 @@ import App from "./App";
 // import StarRating from "./components/star-rating";
 // import ImageSlider from "./components/slider";
 // import QRCodeGenerator from "./components/qr-code-generator";
-import LightDarkMode from "./components/light-dark-mode";
+// import LightDarkMode from "./components/light-dark-mode";
+import ScrollIndicator from "./components/scroll-progress-indicator/ScrollIndicator";
 
 // RENDERING THE ROOT COMPONENT AND STRICT MODE
 // **********************************************
@@ -14,12 +15,13 @@ import LightDarkMode from "./components/light-dark-mode";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App/>
+    {/* <App /> */}
     {/* <AccordionComp /> */}
     {/* <StarRating noOfStars={10}/> */}
     {/* <ImageSlider url={'https://picsum.photos/v2/list?'} page={1} limit={10}/> */}
     {/* <LoadData/>   */}
     {/* <QRCodeGenerator/> */}
-    <LightDarkMode />
+    {/* <LightDarkMode /> */}
+    <ScrollIndicator />
   </React.StrictMode>
 );

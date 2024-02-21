@@ -33,7 +33,7 @@ useEffect(
           setError(err.message);
         }
       } finally {
-        // used here to prevent duplication this is always run while execution of the code.
+        // used here to prevent duplication of code this is always run while execution of the code.
         setIsLoading(false);
       }
     }
