@@ -1,5 +1,12 @@
 // DEFINING AND UPDATING STATE
 
+
+
+
+
+
+
+
 /*
 1) CREATING STATE
 
@@ -19,7 +26,32 @@ setCount(1000);
 - BASED ON CURRENT STATE (function must be pure and return next state)
 setCount((c) => c+1)
 
+TYPES OF STATE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 */
+
+
+
+
+
 
 // USING TWO STATE IN COMPONENT
 export default function App() {
