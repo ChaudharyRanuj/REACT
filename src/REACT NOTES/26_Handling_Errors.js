@@ -103,7 +103,7 @@ console.log(data);
         setMovies(data.Search);
       } catch (err) {
         console.error(err.message);
-        setError(err.message);
+        console.error(err.name);
       } finally {
         // used here to prevent duplication this is always run while execution of the code.
         setIsLoading(false);

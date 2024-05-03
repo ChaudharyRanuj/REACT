@@ -5,7 +5,7 @@ WHAT IS REF?
 
 const myRef = useRef(23)
 myRef.current(1000)
-// now can be use instantly like a normal variable.\
+// now can be use instantly like a normal variable.
 
 Two big use cases:
 

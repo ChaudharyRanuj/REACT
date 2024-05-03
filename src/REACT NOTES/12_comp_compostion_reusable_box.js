@@ -60,11 +60,11 @@ export default function App() {
         <NumResult movies={movies} />
       </NavBar>
       <MainMovieBox>
-        // reuseable box
+        {/* // reuseable box */}
         <Box>
           <MovieList movies={movies} />
         </Box>
-        // reuseable box
+        {/* // reuseable box */}
         <Box>
           <WatchedSummary watched={watched} />
           <WatchList watched={watched} />

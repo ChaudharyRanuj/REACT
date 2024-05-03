@@ -22,8 +22,9 @@ NOTE:
 */
 
 /* 
-imp: X NOT WRITE WAY TO WRITE FUNCTION INSIDE ONE COMPONENT FUNCTION
-****
+imp: NOT WRITE WAY TO WRITE FUNCTION INSIDE ONE COMPONENT FUNCTION
+                    v
+                    v
 
 function App() {
   // NEVER DECLARE FUNCTION INSIDE APP COMPONENT
@@ -37,15 +38,12 @@ function App() {
 
 TYPES OF COMPONENT
 1) STATELESS COMPONENT
-2) STATFULL COMPONENT
+ Stateful components handle the complex logic and data management. 
 
+2) STATEFULL COMPONENT
+stateless components focus on rendering UI elements and promoting code reusability
 
-
-
-
-
-
-
+LINK: https://medium.com/@darshana_18428/understanding-stateful-and-stateless-components-in-reactjs-8f7cee2bf43e
 */
 
 export default function App() {

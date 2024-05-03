@@ -84,7 +84,7 @@ export default function App() {
   // FIRST APPROACH
   // ***************
   useEffect(function () {
-    console.log("After initial render");
+    console.log("A");
   }, []);
 
   useEffect(function () {
@@ -96,7 +96,7 @@ export default function App() {
   // output C A B
 
   // SECOND APPROACH
-// *****************
+  // *****************
 
   // WITH DEPENDENCY (ONLY MOUNTED ONCE)
   useEffect(function () {
@@ -108,19 +108,18 @@ export default function App() {
     console.log("After each render");
   });
 
-// WITH DEFINE STATE IN DEPENDENCY 
-// NOTE: render every time query state changes.
-  useEffect(function () {
-    console.log("After initial render");
-  }, [query]);
-
+  // WITH DEFINE STATE IN DEPENDENCY
+  // NOTE: render every time query state changes.
+  useEffect(
+    function () {
+      console.log("After initial render");
+    },
+    [query]
+  );
 
   console.log("C"); // will print first
 
   // output C B
-
-
-
 
   // HANDLING FETCHING ERRORS
   useEffect(
@@ -140,13 +139,13 @@ export default function App() {
           const data = await res.json();
           // HANDLING API QUERY ERROR HANDLING
           if (data.Response === "False") {
-            throw new Error("Movie not found.");
+            throw new TypeError("Movie not found.");
           }
           console.log(data);
           setMovies(data.Search);
         } catch (err) {
-          console.error(err.message);
-          setError(err.message);
+          console.log(err.name);
+          console.log(err.message);
         } finally {
           // used here to prevent duplication this is always run while execution of the code.
           setIsLoading(false);

@@ -7,7 +7,7 @@
 const [count, setCount] =  useState(23)
 
 
-- BASED ON FUNCTION (FUNCTION MUST BE PURE AND ACCEPET NO ARGUMENTS)
+- BASED ON FUNCTION (FUNCTION MUST BE PURE AND ACCEPT NO ARGUMENTS)
 const [count, setCount] =  useState(()=> localStorage.getItem('count))
 
 

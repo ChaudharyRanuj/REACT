@@ -11,9 +11,9 @@ import "./index.css";
 // import ScrollIndicator from "./components/scroll-progress-indicator/ScrollIndicator";
 // import Tabs from "./components/tabs/Tabs";
 // import ModalTest from "./components/modal-popup/Modal-test";
+// import SearchAutoComplete from "./components/search-autocomplete/SearchAutoComplete";
 // RENDERING THE ROOT COMPONENT AND STRICT MODE
 // **********************************************
-import SearchAutoComplete from "./components/search-autocomplete/SearchAutoComplete";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -28,6 +28,8 @@ root.render(
     {/* <ScrollIndicator /> */}
     {/* <Tabs /> */}
     {/* <ModalTest /> */}
-    <SearchAutoComplete/>
+    {/* <SearchAutoComplete/> */}
+  
   </React.StrictMode>
 );
+

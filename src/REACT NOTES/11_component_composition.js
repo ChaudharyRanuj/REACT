@@ -55,8 +55,8 @@ export default function App() {
   const [watched, setWatched] = useState(tempWatchedData);
   return (
     <>
-      // component composition
-      // Note: Help to avoid deep prop drilling down to childrens
+      {/* // component composition
+      // Note: Help to avoid deep prop drilling down to childrens */}
       <NavBar>
         <Search />
         <NumResult movies={movies} />

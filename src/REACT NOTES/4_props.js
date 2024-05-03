@@ -1,7 +1,7 @@
 /*
 What is Props? 
 ***************
-Props full form in Properties
+Props full form is Properties
 
 Props features:
 ***************

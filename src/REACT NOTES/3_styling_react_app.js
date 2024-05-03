@@ -22,7 +22,4 @@ STYLE COMPONENTS
 TAILWIND 
 
 
-
-
-
 */

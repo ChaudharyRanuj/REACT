@@ -22,8 +22,8 @@ Component is a Blueprint or Template.
           v
           v
           v
-With this blueprint React create instances.          
-          
+With this blueprint React create instances.         
+           
 
 What is Instances?
 
