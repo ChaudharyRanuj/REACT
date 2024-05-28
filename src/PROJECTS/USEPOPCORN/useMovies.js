@@ -30,7 +30,6 @@ export function useMovie(query, callback) {
           if (!res.ok) {
             throw new Error("Something went wrong with fetching movies.");
           }
-
           const data = await res.json();
           // HANDLING API QUERY ERROR HANDLING
           if (data.Response === "False") {
@@ -40,9 +39,7 @@ export function useMovie(query, callback) {
           setError("");
         } catch (err) {
           // CATCHING THE ABORT ERROR MESSAGE
-          console.log(err.message);
-          console.log(err.name);
-          if (err.name !== "AbortError") {
+         if (err.name !== "AbortError") {
             setError(err.message);
           }
         } finally {
