@@ -16,39 +16,55 @@
 }
 
 .app__form__container {
-  width: 50%;
   height: 20px;
+  width: 50%;
   display: flex;
-  gap: 4px;
   align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background-color: antiquewhite;
+}
+.app__form__container form {
+  width: 100%;
+  display: flex;
 }
 .app__form__container input,
 .app__form__container button,
 .app__form__container select {
   padding: 1rem;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 400;
 }
+
 .app__form__container button {
   cursor: pointer;
 }
 
+.app__form__container button:active {
+  transform: scale(95%);
+}
+
 .app__form__container input {
   flex: 1;
+}
+.app__form__container input::placeholder {
+  color: #999;
 }
 
 /* PACKAGING LIST */
 
 .app__packaging__list {
   background-color: rgb(239, 161, 65);
-  height: 300px;
+  height: 200px;
   padding: 2rem;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 2rem;
+  overflow-y: scroll;
 }
+
 .app__item {
   display: flex;
   justify-content: center;
@@ -56,26 +72,54 @@
   gap: 4px;
   font-weight: 600;
 }
+
+.app__item input {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  background-color: blueviolet;
+}
 .app__item button {
   background-color: transparent;
   border: none;
   cursor: pointer;
+  box-shadow: rgba(52, 52, 180, 0.2) 0px 50px 100px -20px inset;
 }
 
 .item__packed {
   text-decoration: line-through;
+  color: green;
 }
 
 .packing__finished {
-  background-color: green !important; 
+  background-color: green !important;
   color: white !important;
 }
+.app__clearlist {
+  padding: 5px;
+}
+.app__clearlist button {
+  display: block;
+  margin: auto;
+  padding: 1rem 2rem;
+  font-size: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.app__clearlist button:active {
+  transform: scale(95%);
+}
+
 /* FOOTER */
 .app__footer {
   padding: 2rem;
   text-align: center;
   font-size: 20px;
   color: rgb(27, 18, 45);
-  background-color: rgb(216, 128, 21);
+  background-color: rgb(226, 255, 99);
   font-weight: 600;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border: none;
 }
