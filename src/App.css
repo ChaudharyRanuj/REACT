@@ -16,18 +16,27 @@
 }
 
 .app__form__container {
-  width: 50%;
   height: 20px;
+  width: 50%;
   display: flex;
-  gap: 4px;
   align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background-color: antiquewhite;
+}
+.app__form__container form {
+  width: 100%;
+  display: flex;
 }
 .app__form__container input,
 .app__form__container button,
 .app__form__container select {
   padding: 1rem;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 400;
+}
+.app__form__container select {
+
 }
 .app__form__container button {
   cursor: pointer;
@@ -35,6 +44,9 @@
 
 .app__form__container input {
   flex: 1;
+}
+.app__form__container input::placeholder {
+  color: #999;
 }
 
 /* PACKAGING LIST */
@@ -64,12 +76,23 @@
 
 .item__packed {
   text-decoration: line-through;
+  color: green;
 }
 
 .packing__finished {
-  background-color: green !important; 
+  background-color: green !important;
   color: white !important;
 }
+
+.app__clearlist button {
+  display: block;
+  margin: auto;
+  padding: 1rem 2rem;
+  font-size: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 /* FOOTER */
 .app__footer {
   padding: 2rem;

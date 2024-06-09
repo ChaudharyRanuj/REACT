@@ -17,6 +17,9 @@ function App() {
     );
   }
 
+  function handleClearList() {
+    setItems((items) => []);
+  }
   return (
     <div className="app__container">
       <Header />
@@ -25,6 +28,7 @@ function App() {
         items={items}
         onDeleteItem={handleDeleteItem}
         onPacked={handlePacked}
+        onClearList={handleClearList}
       />
       <Footer items={items} />
     </div>
@@ -46,9 +50,10 @@ function Form({ onSetItems }) {
   function handleAddItem(e) {
     e.preventDefault();
     if (input.length == 0) return;
+
     let item = {
       count: noOfItems,
-      name: input,
+      name: input.slice(0, 1).toUpperCase() + input.slice(1),
       packed: false,
       id: Date.now(),
     };
@@ -72,7 +77,7 @@ function Form({ onSetItems }) {
           </select>
           <input
             type="text"
-            placeholder="Enter Your List Name.."
+            placeholder="Enter item name.."
             value={input}
             onChange={(e) => setInput(() => e.target.value)}
           />
@@ -83,19 +88,24 @@ function Form({ onSetItems }) {
   );
 }
 
-function PackingList({ items, onDeleteItem, onPacked }) {
+function PackingList({ items, onDeleteItem, onPacked, onClearList }) {
   return (
-    <div className="app__packaging__list">
-      {items.length > 0 &&
-        items.map((item, idx) => (
-          <Item
-            item={item}
-            key={idx}
-            onDeleteItem={onDeleteItem}
-            onPacked={onPacked}
-          />
-        ))}
-    </div>
+    <>
+      <div className="app__packaging__list">
+        {items.length > 0 &&
+          items.map((item, idx) => (
+            <Item
+              item={item}
+              key={idx}
+              onDeleteItem={onDeleteItem}
+              onPacked={onPacked}
+            />
+          ))}
+      </div>
+      <div className="app__clearlist">
+        <button type="button" onClick={onClearList}>Clear List</button>
+      </div>
+    </>
   );
 }
 
