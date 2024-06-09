@@ -3,7 +3,12 @@ import React, { useRef, useState } from "react";
 import "./App.css";
 
 function App() {
+ 
   let [items, setItems] = useState([]);
+  
+  function handleAddItems(item) {
+    setItems((items) => [...items, item]);
+  }
 
   function handleDeleteItem(id) {
     setItems((items) => items.filter((item) => item.id != id));
@@ -20,10 +25,11 @@ function App() {
   function handleClearList() {
     setItems((items) => []);
   }
+
   return (
     <div className="app__container">
       <Header />
-      <Form onSetItems={setItems} />
+      <Form onSetItems={handleAddItems} />
       <PackingList
         items={items}
         onDeleteItem={handleDeleteItem}
@@ -57,7 +63,7 @@ function Form({ onSetItems }) {
       packed: false,
       id: Date.now(),
     };
-    onSetItems((items) => [...items, item]);
+    onSetItems(item);
   }
   return (
     <div className="app__form">
@@ -103,7 +109,9 @@ function PackingList({ items, onDeleteItem, onPacked, onClearList }) {
           ))}
       </div>
       <div className="app__clearlist">
-        <button type="button" onClick={onClearList}>Clear List</button>
+        <button type="button" onClick={onClearList}>
+          Clear List
+        </button>
       </div>
     </>
   );
