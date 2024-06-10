@@ -128,6 +128,7 @@ const store2 = Redux.createStore(rootReducer);
 const store = Redux.createStore(authReducer);
 
 // ACTIONS
+// THESE FUNCTION ARE ACTION CREATORS
 const loginUser = () => {
   return {
     type: LOGIN,
@@ -256,3 +257,187 @@ const immutableReducer = (state = todos, action) => {
 //       but it's important to note that it only makes a shallow copy of the array.
 
 // ***************** USING REDUX WITH REACT ************************
+
+class DisplayMessages extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: '',
+      messages: []
+    }
+  }
+  // Add handleChange() and submitMessage() methods here
+ handleChange(e) {
+this.setState({
+ ...this.state,
+  input: e.target.value
+})
+}
+
+submitMessage() {
+
+  this.setState({
+ messages: [...this.state.messages, this.state.input],
+ input: ''
+ })
+}
+ 
+  render() {
+    return (
+      <div>
+        <h2>Type in a new Message: {this.state.input}</h2>
+        { /* Render an input, button, and ul below this line */ }
+<input type="text" value={this.state.input} onChange={this.handleChange.bind(this)} />
+<button type="button" onClick={this.submitMessage.bind(this)}>Submit</button>
+<ul> {this.state.messages.map(message => <li> {message} </li>)}</ul>
+        { /* Change code above this line */ }
+      </div>
+    );
+  }
+};
+
+
+************************** Extract State Logic to Redux *****************
+
+// Define ADD, addMessage(), messageReducer(), and store here:
+const ADD = "ADD"
+
+function addMessage(message) {
+return {
+  type: "ADD",
+  message
+}
+}
+
+function messageReducer(state=[], action) {
+  switch (action.type) {
+    case ADD:
+    return [...state, action.message]
+    default:
+    return state;
+  }
+}
+
+const store = Redux.createStore(messageReducer)
+
+
+// ************************** Use Provider to Connect Redux to React *****************
+// Redux:
+const ADD = 'ADD';
+
+const addMessage = (message) => {
+  return {
+    type: ADD,
+    message
+  }
+};
+
+const messageReducer = (state = [], action) => {
+  switch (action.type) {
+    case ADD:
+      return [
+        ...state,
+        action.message
+      ];
+    default:
+      return state;
+  }
+};
+
+
+
+const store = Redux.createStore(messageReducer);
+
+// React:
+
+class DisplayMessages extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: '',
+      messages: []
+    }
+    this.handleChange = this.handleChange.bind(this);
+    this.submitMessage = this.submitMessage.bind(this);
+  }
+  handleChange(event) {
+    this.setState({
+      input: event.target.value
+    });
+  }
+  submitMessage() {  
+    this.setState((state) => {
+      const currentMessage = state.input;
+      return {
+        input: '',
+        messages: state.messages.concat(currentMessage)
+      };
+    });
+  }
+  render() {
+    return (
+      <div>
+        <h2>Type in a new Message:</h2>
+        <input
+          value={this.state.input}
+          onChange={this.handleChange}/><br/>
+        <button onClick={this.submitMessage}>Submit</button>
+        <ul>
+          {this.state.messages.map( (message, idx) => {
+              return (
+                 <li key={idx}>{message}</li>
+              )
+            })
+          }
+        </ul>
+      </div>
+    );
+  }
+};
+
+const Provider = ReactRedux.Provider; 
+// ************************************
+
+class AppWrapper extends React.Component {
+  // Render the Provider below this line
+render () {
+return (
+<Provider store={store}>
+<DisplayMessages/>
+</Provider>)
+ 
+} 
+  // Change code above this line
+};
+
+
+// *************************** Map State to Props **************
+const state = [];
+
+// Change code below this line
+
+function mapStateToProps(state) {
+return {
+  messages: state
+}
+}
+
+
+
+// *********************** Map Dispatch to Props **********************
+
+const addMessage = (message) => {
+  return {
+    type: 'ADD',
+    message: message
+  }
+};
+
+// Change code below this line
+function mapDispatchToProps(dispatch) {
+  return {
+    submitNewMessage: function(message){
+    dispatch(addMessage(message))
+    }
+  }
+}
