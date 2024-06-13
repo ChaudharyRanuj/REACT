@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  text-align: center;
+}
+
+.progress_container {
+  width: 100%;
+  background-color: black;
+  height: 10px;
+  position: fixed;
+  top: 0;
+}
+
+.progress_bar {
+  height: 10px;
+  background-color: green;
+  width: 0%;
+}
