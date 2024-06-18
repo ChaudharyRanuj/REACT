@@ -47,6 +47,7 @@ function Map() {
           {isLoadingPosition ? "Loading..." : "Use your position"}
         </Button>
       )}
+
       <MapContainer
         center={mapPosition}
         zoom={6}
@@ -80,7 +81,6 @@ function ChangeCenter({ position }) {
   map.setView(position);
   return null;
 }
-
 
 function DetectClick() {
   const navigate = useNavigate();
