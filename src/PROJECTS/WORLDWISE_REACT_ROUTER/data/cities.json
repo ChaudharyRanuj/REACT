@@ -1,0 +1,28 @@
+{
+  "cities": [
+    {
+      "id": "6c40",
+      "cityName": "London",
+      "country": "United Kingdom",
+      "date": "2024-06-29",
+      "notes": "dsdsds",
+      "emoji": "gb",
+      "position": {
+        "lat": "51.53800754877571",
+        "lng": "-0.31860351562500006"
+      }
+    },
+    {
+      "id": "2bb3",
+      "cityName": "London",
+      "country": "United Kingdom",
+      "date": "2024-06-20",
+      "notes": "dsdsds",
+      "emoji": "gb",
+      "position": {
+        "lat": "51.555087955257605",
+        "lng": "-0.406494140625"
+      }
+    }
+  ]
+}
