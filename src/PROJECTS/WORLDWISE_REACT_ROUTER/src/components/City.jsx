@@ -19,24 +19,22 @@ function City() {
   const { currCity, isLoading, getCity } = useCities();
   const { cityName, date, notes } = currCity;
 
-  useEffect(function () {
-    async function getCityData() {
-      await getCity(id);
-    }
-    getCityData();
-  }, []);
+  useEffect(
+    function () {
+      getCity(id);
+    },
+    [getCity, id]
+  );
 
   // TEMP DATA
-  
+
   if (isLoading) return <Spinner />;
 
   return (
     <div className={styles.city}>
       <div className={styles.row}>
         <h6>City Name</h6>
-        <h3>
-         {cityName}
-        </h3>
+        <h3>{cityName}</h3>
       </div>
 
       <div className={styles.row}>
