@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 
-export default function BackButton() {
+const BackButton = function BackButton() {
   const navigate = useNavigate();
 
   return (
@@ -9,10 +9,12 @@ export default function BackButton() {
       type={"back"}
       onClick={(e) => {
         e.preventDefault();
-        navigate(-1);
+        navigate("/app");
       }}
     >
       &#27; Back
     </Button>
   );
-}
+};
+
+export default BackButton;

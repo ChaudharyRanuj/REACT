@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./User.module.css";
 import { useAuth } from "../context/AuthContext";
-import userImage from "../../public/userimage.jpg"
-function User() {
+import userImage from "../../public/userimage.jpg";
+
+const User = function () {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
@@ -11,7 +12,6 @@ function User() {
     logout();
     navigate("/");
   }
-console.log(userImage);
 
   return (
     <div className={styles.user}>
@@ -20,7 +20,7 @@ console.log(userImage);
       <button onClick={handleClick}>Logout</button>
     </div>
   );
-}
+};
 
 export default User;
 

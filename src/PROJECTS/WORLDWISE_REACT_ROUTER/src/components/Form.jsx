@@ -18,7 +18,7 @@ function Form() {
 
   const [cityName, setCityName] = useState("");
   const [country, setCountry] = useState("");
-  const [date, setDate] = useState("2024/01/01");
+  const [date, setDate] = useState("2024-01-01");
   const [notes, setNotes] = useState("");
   const [emoji, setEmoji] = useState("");
   const [geoCodError, setGeoCodeError] = useState("");
@@ -107,7 +107,6 @@ function Form() {
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
-          required
         />
       </div>
 
