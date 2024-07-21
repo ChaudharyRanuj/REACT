@@ -63,6 +63,12 @@ const rootReducer = combineReducers({
 
 const store = createStore(rootReducer);
 
+const root = ReactDOM.createRoot(document.getElementById('root'))
+root.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+)
 // store.dispatch({ type: "account/deposit", payload: 500 });
 // store.dispatch({ type: "account/withdraw", payload: 200 });
 // console.log(store.getState());
