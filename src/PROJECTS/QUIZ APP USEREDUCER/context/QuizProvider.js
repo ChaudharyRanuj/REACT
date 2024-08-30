@@ -1,18 +1,19 @@
-import { useContext, createContext, useEffect, useReducer } from "react";
+import { useContext, createContext, useEffect, useReducer, React } from "react";
 
 const SECS_PER_QUESTION = 30;
 const LOADING = "LOADING";
 const READY = "READY";
 const ACTIVE = "ACTIVE";
+const ERROR = "ERROR";
+
 const NEW_ANSWER = "NEW ANSWER";
 const TIMER = "TIMER";
 const ANSWERED = "ANSWERED";
 const FINISH_QUIZ = "FINISH QUIZ";
 const RESTART_QUIZ = "RESTART QUIZ";
 const NEXT_QUESTION = "NEXT QUESTION";
-const ERROR = "ERROR";
 
-const QuizContext = createContext();
+const QuizContext = React.createContext();
 
 const initialState = {
   questions: [],

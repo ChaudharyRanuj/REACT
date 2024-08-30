@@ -9,10 +9,6 @@ In the Render Props design pattern, a component is structured to accept a functi
 This approach allows for more flexibility as it avoids embedding specific rendering instructions within 
 each component, offering a dynamic and customizable way to determine how the content should be presente
 
-
-
-
-
 */
 // EXAMPLE 1ST
 const products = [
