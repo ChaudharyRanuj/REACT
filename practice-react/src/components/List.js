@@ -1,10 +1,10 @@
-import { ListItem } from "./ListItem";
-export const List = ({ users }) => {
+
+export const List = ({ data, func }) => {
   return (
     <ul className="flex flex-col w-full"  >
-      {users &&
-        users.length > 0 &&
-        users.map((user) => <ListItem key={user.id} user={user} />)}
+      {data &&
+        data.length > 0 &&
+        data.map(func)}
     </ul>
   );
 };

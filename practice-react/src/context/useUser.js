@@ -2,8 +2,8 @@ import { createContext, useContext, useReducer } from "react";
 
 const initialState = {
   users: [
-    { id: 123, name: "ranuj choudhary", email: "ranujchoudhary@gmail.com" },
-    { id: 124, name: "ranuj choudhary", email: "ranujchoudhary@gmail.com" },
+    { id: "123", name: "ranuj choudhary", email: "ranujchoudhary@gmail.com" },
+    { id: "124", name: "ranuj choudhary", email: "ranujchoudhary@gmail.com" },
   ],
 };
 
@@ -14,14 +14,29 @@ function userReducer(state, action) {
     case "add":
       return {
         ...state,
+        users: [...state.users, action.payload],
       };
-    case "edit":
+    case "update":
+      const updatedUser = state.users.map((user) => {
+        console.log(user.id === action.payload.id);
+        if (user.id === action.payload.id) {
+          return {
+            ...action.payload,
+          };
+        } else {
+          return user;
+        }
+      });
+     
+
       return {
         ...state,
+        users: [...updatedUser],
       };
     case "delete":
       return {
         ...state,
+        users: [...state.users.filter((user) => user.id !== action.payload.id)],
       };
     default:
       return state;

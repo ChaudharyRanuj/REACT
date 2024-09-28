@@ -1,10 +1,8 @@
-import { useState } from "react";
 import { Form } from "../components/Form";
-
+import { useContacts } from "../hooks/useContacts";
 
 export const AddContacts = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const { name, email, setEmail, setName, addContacts } = useContacts();
 
   return (
     <div>
@@ -15,7 +13,8 @@ export const AddContacts = () => {
           email={email}
           onChangeName={(e) => setName(e.target.value)}
           onChangeEmail={(e) => setEmail(e.target.value)}
-          buttonText={'Add Contacts'}
+          buttonText={"Add Contacts"}
+          onHandleSubmit={addContacts}
         />
       </div>
     </div>

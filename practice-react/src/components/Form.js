@@ -4,13 +4,13 @@ import { Input } from "./Input";
 export const Form = ({
   name,
   email,
-  onSubmit,
+  onHandleSubmit,
   onChangeName,
   onChangeEmail,
   buttonText,
 }) => {
   return (
-    <form action={onSubmit}>
+    <form onSubmit={onHandleSubmit}>
       <div className="p-4 flex w-1/3 justify-center flex-col">
         <label htmlFor="name" className="font-bold text-gray-800">
           Name:
@@ -28,7 +28,7 @@ export const Form = ({
           Email:
         </label>
         <Input
-          type="text"
+          type="email"
           id="Email"
           placeholder="Enter Your Email"
           value={email}
@@ -41,5 +41,3 @@ export const Form = ({
     </form>
   );
 };
-
-
