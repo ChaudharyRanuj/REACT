@@ -1,37 +1,25 @@
-import { useEffect, useState } from "react";
-import { getLocalStorageData, setLocalStorageData } from "../helpers/helpers";
-import { useUser } from "../context/useUser";
-import { v4 as uuidv4 } from "uuid";
+// import { useUser } from "../context/useUser";
+import { v4 as uuid } from "uuid";
+import { addUsers } from "../api/contacts";
+import { useLocalStorage } from "./useLocalStorage";
 
+// components
 export function useContacts() {
-  const { dispatch } = useUser();
+  // const { dispatch } = useUser();
+  // local state
+  const { name, email, setName, setEmail } = useLocalStorage("contactForm");
 
-  const [name, setName] = useState(() => {
-    const contactForm = getLocalStorageData("contactForm");
-    return contactForm ? contactForm.name : "";
-  });
-
-  const [email, setEmail] = useState(() => {
-    const contactForm = getLocalStorageData("contactForm");
-    return contactForm ? contactForm.email : "";
-  });
-
-  useEffect(() => {
-    const form = {
-      name,
-      email,
-    };
-    setLocalStorageData("contactForm", form);
-  }, [email, name]);
-
+  // handlers
   function addContacts(e) {
     const user = {
-      id: uuidv4(),
+      id: uuid(),
       name,
       email,
     };
 
-    dispatch({ type: "add", payload: user });
+    // dispatch({ type: "add", payload: user });
+
+    addUsers(`http://localhost:8000/contacts`, user);
 
     // clear form input
     setEmail("");
@@ -41,5 +29,5 @@ export function useContacts() {
     e.preventDefault();
   }
 
-  return { name, email, addContacts, setEmail,setName,};
+  return { name, email, addContacts, setEmail, setName };
 }

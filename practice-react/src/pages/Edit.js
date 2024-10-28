@@ -1,24 +1,31 @@
-import {useEffect, useState } from "react";
+import { Link, Route, Routes, useParams } from "react-router-dom";
+
+// contacts api
+import { UpdateUser } from "../api/contacts";
+
+// custom hook
+import { useLocalStorage } from "../hooks/useLocalStorage";
+
+// components
 import { Form } from "../components/Form";
-import { useParams } from "react-router-dom";
-import { useUser } from "../context/useUser";
+// import { useEffect } from "react";
 
 export const EditContacts = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const { id } = useParams();
-  const { users, dispatch } = useUser();
-  useEffect(() => {
-    localStorage.setItem("users", JSON.stringify(users));
-  }, [users]);
+  const { name, email, setName, setEmail } = useLocalStorage("updateForm");
 
+  const { id } = useParams();
+  // const { users, dispatch } = useUser();
+  console.log(id);
   function updateUser(e) {
     const user = {
       id,
       name,
       email,
     };
-    dispatch({ type: "update", payload: user });
+    // dispatch({ type: "update", payload: user });
+    UpdateUser("http://localhost:8000/contacts", id, user);
+    setName("");
+    setEmail("");
     e.preventDefault();
   }
 
@@ -35,6 +42,7 @@ export const EditContacts = () => {
           onHandleSubmit={updateUser}
         />
       </div>
+
     </div>
   );
 };
